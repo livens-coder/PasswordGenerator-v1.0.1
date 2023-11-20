@@ -36,6 +36,27 @@ def generate_password_simple():
             break
         except ValueError:
             print("Invalid input. Please enter a valid number for the length.")
+            
+            
+def generate_password_advanced():
+    print("Welcome to the Password Generator!")
+    print("This tool will generate a random password for you.")
 
-if __name__ == "__main__":
-    generate_password_simple()
+    while True:
+        try:
+            length = int(input("Enter the length for the password: "))
+            uppercase = input("Do you want to include uppercase characters? (y/n): ").lower() == "y"
+            digits = input("Do you want to include digits? (y/n): ").lower() == "y"
+            special_chars = input("Do you want to include special characters? (y/n): ").lower() == "y"
+
+            password_generator = PasswordGenerator(
+                length=length,
+                uppercase=uppercase,
+                digits=digits,
+                special_chars=special_chars
+            )
+            generated_password = password_generator.generate_password()
+            print(f"Generated password: {generated_password}")
+            break
+        except ValueError:
+            print("Invalid input. Please enter a valid number for the length.")
